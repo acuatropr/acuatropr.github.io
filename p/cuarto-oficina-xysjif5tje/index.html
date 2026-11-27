@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Cuatro · Propuesta · Cuarto oficina</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#013C4D;--medio:#1C5C72;--teal:#37B8D7;--claro:#94D3E4;--arena:#EEEBEA;--texto:#3C3C3B;--gris:#7F7F7F;--linea:#DAD5D2;--tinte:#E8F4F8;--verde:#00915A;--naranja:#FF7900}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--texto);background:var(--arena);font-size:15px;line-height:1.45;padding-bottom:96px}
+button{font:inherit;cursor:pointer}
+a{color:var(--medio)}
+.pilot{background:#FFF3E3;color:#7A3D00;font-size:12.5px;line-height:1.35;padding:8px 16px;text-align:center;border-bottom:1px solid #F3D3A6}
+.top{background:var(--azul);color:#fff;padding:14px 16px}
+.top .in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.top img{height:46px;width:auto;display:block}
+.top p{margin:0;font-size:12.5px;color:var(--claro);letter-spacing:1.2px;text-transform:uppercase;font-weight:500}
+.top b{display:block;color:#fff;font-size:14px;letter-spacing:0;text-transform:none;font-weight:500;margin-top:2px}
+main{max-width:560px;margin:0 auto;padding:20px 16px 0}
+.kicker{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--medio);font-weight:500;margin:0 0 6px}
+h1{font-size:27px;line-height:1.15;color:var(--azul);font-weight:600;margin:0 0 8px}
+h2{font-size:19px;line-height:1.2;color:var(--azul);font-weight:600;margin:0}
+h3{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--medio);font-weight:500;margin:20px 0 8px}
+.lead{margin:0 0 16px;font-size:15px}
+
+/* visor */
+.viewer{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(1,60,77,.10)}
+.stage{position:relative;aspect-ratio:4/3;background:#dfe3e4;overflow:hidden}
+.stage img.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.tabs{position:absolute;left:10px;right:10px;top:10px;display:flex;background:rgba(255,255,255,.94);border-radius:999px;padding:3px;box-shadow:0 1px 5px rgba(0,0,0,.18);max-width:420px;margin:0 auto;z-index:3}
+.tabs button{flex:1 1 auto;border:0;background:transparent;color:var(--texto);font-size:12px;font-weight:500;padding:6px 4px;border-radius:999px;white-space:nowrap}
+.tabs button.on{background:var(--azul);color:#fff}
+.chip{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--azul);box-shadow:0 1px 5px rgba(0,0,0,.18);white-space:nowrap;z-index:3}
+.tag{position:absolute;right:10px;bottom:44px;background:rgba(1,60,77,.82);color:#fff;font-size:10.5px;padding:3px 8px;border-radius:4px;z-index:3}
+.load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--azul);font-size:13px;font-weight:500;z-index:2}
+.vfoot{padding:10px 12px 12px}
+.vcap{margin:0;font-size:13px;color:var(--texto)}
+.vnote{margin:4px 0 0;font-size:11.5px;color:var(--gris)}
+.vctl{display:none;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vctl button{border:1px solid var(--medio);background:#fff;color:var(--medio);border-radius:8px;padding:7px 10px;font-size:12.5px;font-weight:500}
+.vctl button.on{background:var(--azul);border-color:var(--azul);color:#fff}
+
+/* tarjetas */
+.card{background:#fff;border-radius:14px;padding:18px 16px;margin-top:16px;box-shadow:0 1px 3px rgba(1,60,77,.10)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.price{text-align:right;line-height:1.05}
+.price small{display:block;font-size:11px;color:var(--gris);font-weight:400;margin-bottom:3px}
+.price b{font-size:28px;color:var(--azul);font-weight:600;font-variant-numeric:tabular-nums}
+.bump{animation:bump .35s ease}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.07);color:var(--medio)}100%{transform:scale(1)}}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--linea);background:#fff;border-radius:12px;padding:12px;margin-top:8px;color:inherit;transition:border-color .15s,background .15s}
+.opt .tx{flex:1;min-width:0}
+.opt .n{display:block;font-weight:500;color:var(--azul);font-size:14.5px;line-height:1.25}
+.opt .d{display:block;font-size:12.5px;color:var(--texto);margin-top:3px;line-height:1.35}
+.opt .p{font-size:13.5px;font-weight:500;color:var(--texto);white-space:nowrap;font-variant-numeric:tabular-nums}
+.opt.on{border-color:var(--medio);background:var(--tinte)}
+.opt.fix{cursor:default;border-color:var(--medio);background:var(--tinte)}
+.opt.off-dep{opacity:.5}
+.sw{flex:none;width:42px;height:25px;border-radius:999px;background:#C9C4C1;position:relative;transition:background .15s}
+.sw:after{content:"";position:absolute;left:3px;top:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+.opt.on .sw{background:var(--medio)}
+.opt.on .sw:after{transform:translateX(17px)}
+.inc{flex:none;font-size:11px;font-weight:500;color:var(--medio);border:1px solid var(--medio);border-radius:999px;padding:2px 8px}
+.see{border:0;background:none;color:var(--medio);font-size:12.5px;font-weight:500;padding:8px 0 0;text-decoration:underline}
+.sum{margin-top:16px;background:var(--arena);border-radius:10px;padding:6px 12px}
+.sum div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:13.5px;border-bottom:1px solid var(--linea);font-variant-numeric:tabular-nums}
+.sum div:last-child{border-bottom:0;font-weight:600;color:var(--azul);font-size:15px}
+.sum span:last-child{white-space:nowrap}
+.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pay div{background:var(--arena);border-radius:10px;padding:10px 8px;text-align:center}
+.pay b{display:block;font-size:16px;color:var(--azul);font-weight:600;font-variant-numeric:tabular-nums}
+.pay i{display:block;font-style:normal;font-size:10.5px;color:var(--medio);font-weight:500;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+.pay span{display:block;font-size:11.5px;line-height:1.3;margin-top:3px}
+.fine{font-size:12.5px;margin:10px 0 0}
+ul.plain{margin:8px 0 0;padding-left:18px;font-size:13.5px}
+ul.plain li{margin:4px 0}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13.5px}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--medio);flex:none}
+.cta{display:block;width:100%;border:0;border-radius:12px;background:var(--teal);color:var(--azul);font-weight:600;font-size:16px;padding:15px;margin-top:14px}
+.cta[disabled]{background:#D5D1CE;color:#8B8784;cursor:not-allowed}
+.link{border:0;background:none;color:var(--medio);font-size:13px;font-weight:500;text-decoration:underline;padding:10px 0 0}
+.ok{display:flex;gap:12px;align-items:center}
+.ok .dot{flex:none;width:38px;height:38px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px}
+.file{display:flex;align-items:center;gap:12px;border:1.5px solid var(--linea);border-radius:12px;padding:11px 12px;margin-top:8px;text-decoration:none;color:inherit}
+.file .ic{flex:none;width:34px;height:34px;border-radius:8px;background:var(--tinte);display:flex;align-items:center;justify-content:center}
+.file .ic svg{width:18px;height:18px;stroke:var(--medio);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.file .n{display:block;font-weight:500;color:var(--azul);font-size:14px;line-height:1.25}
+.file .d{display:block;font-size:12px;color:var(--gris)}
+.file .st{margin-left:auto;font-size:11px;font-weight:500;color:var(--naranja);white-space:nowrap}
+textarea{width:100%;font:inherit;font-size:12.5px;border:1px solid var(--linea);border-radius:8px;padding:8px;margin-top:8px;height:150px;display:none}
+footer{max-width:560px;margin:26px auto 0;padding:0 16px 24px;text-align:center;font-size:12.5px;color:var(--gris)}
+footer img{height:54px;display:block;margin:0 auto 10px}
+footer b{color:var(--texto);font-weight:500}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--linea);box-shadow:0 -2px 10px rgba(1,60,77,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:10}
+.bar .in{max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.bar small{display:block;font-size:11px;color:var(--gris)}
+.bar b{font-size:21px;color:var(--azul);font-weight:600;font-variant-numeric:tabular-nums}
+.bar button{border:0;border-radius:10px;background:var(--teal);color:var(--azul);font-weight:600;font-size:15px;padding:12px 22px}
+.bar.done button{background:var(--verde);color:#fff}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="pilot" id="pilot">Piloto · los precios son de prueba y la aprobación todavía no se envía a A Cuatro.</div>
+<div class="top"><div class="in"><img src="logo-neg.png" alt="A Cuatro"><p>Propuesta · Concepto R9<b>Preparada para Miguel</b></p></div></div>
+
+<main>
+  <p class="kicker">Su proyecto</p>
+  <h1>Su cuarto oficina, Miguel.</h1>
+  <p class="lead">Oficina para dos, cama de visitas escondida, home lab y espacio libre para ejercitarse.</p>
+
+  <div class="viewer" id="visor">
+    <div class="stage">
+      <div class="tabs" id="tabs"></div>
+      <img class="shot" id="shot" src="r-cerrada.jpg" alt="Render del cuarto con la cama cerrada">
+      <canvas id="cv" hidden></canvas>
+      <div class="load" id="load" hidden>Cargando el modelo 3D…</div>
+      <span class="tag" id="tag">Render ilustrativo</span>
+      <span class="chip">11' 5" × 9' 5" · medidas del levante</span>
+    </div>
+    <div class="vfoot">
+      <p class="vcap" id="vcap"></p>
+      <p class="vnote" id="vnote"></p>
+      <div class="vctl" id="vctl"></div>
+    </div>
+  </div>
+
+  <section class="card" id="config">
+    <div class="head"><h2>Hágalo suyo</h2><div class="price"><small>Su precio preliminar</small><b id="p1">$0</b></div></div>
+    <h3>Qué incluye</h3>
+    <div id="zonas"></div>
+    <h3>Adicionales</h3>
+    <div id="extras"></div>
+    <button class="see" id="see3d" type="button">Ver su selección en el modelo 3D</button>
+    <div class="sum" id="sum"></div>
+  </section>
+
+  <section class="card">
+    <h2>Forma de pago</h2>
+    <div class="pay" id="pay"></div>
+    <p class="fine">El estimado es preliminar y vale por 30 días. El costo exacto se confirma al terminar el diseño.</p>
+  </section>
+
+  <section class="card">
+    <h2>Antes de aprobar</h2>
+    <ul class="plain">
+      <li>Gabinetes en melamina Finsa de 19 mm, tono greige claro, con tapas y bandas en nogal medio.</li>
+      <li>Con la cama abierta quedan 26" de paso al closet y 28" frente al escritorio.</li>
+      <li>No incluye sillas, TV, computadoras, equipo del home lab ni decoración. En las imágenes aparecen como ambientación.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="aprobar">
+    <div id="pre">
+      <h2>Apruebe y reserve</h2>
+      <p class="fine" id="resumen"></p>
+      <label class="check"><input type="checkbox" id="chk"><span>Revisé el alcance y el precio preliminar de esta propuesta.</span></label>
+      <button class="cta" id="go" type="button" disabled>Aprobar propuesta</button>
+    </div>
+    <div id="post" hidden>
+      <div class="ok"><div class="dot">✓</div><div><h2>Propuesta aprobada</h2><p class="fine" style="margin:2px 0 0" id="okline"></p></div></div>
+      <p class="fine">El contrato y el estimado le llegan por Joist para su firma. El depósito se coordina directamente con A Cuatro.</p>
+      <p class="fine" id="envio" hidden></p>
+      <h3>Sus documentos</h3>
+      <div class="file"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span><span class="n">Presentación del concepto R9</span><span class="d">Planta, elevaciones y renders</span></span><span class="st">Por enviar</span></div>
+      <a class="file" href="#visor" id="doc3d"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span><span class="n">Modelo 3D interactivo</span><span class="d">Ábralo aquí mismo</span></span></a>
+      <div class="file"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 17l4-4 3 3 5-6 4 5"/><path d="M3 20h18"/></svg></span><span><span class="n">Medidas del levante</span><span class="d">Cuarto de 11' 5" × 9' 5", techo a 11'</span></span></div>
+      <div class="file"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13h5M10 17h5"/></svg></span><span><span class="n">Contrato y estimado</span><span class="d">Para firma en Joist</span></span><span class="st">Por enviar</span></div>
+      <button class="cta" id="copy" type="button">Copiar el resumen de mi selección</button>
+      <textarea id="ta" readonly></textarea>
+      <button class="link" id="undo" type="button">Cambiar mi selección</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="logo.png" alt="A Cuatro">
+  <p>¿Tiene preguntas? Escríbanos a <b>info.acuatropr@gmail.com</b> o por Instagram, <b>@a_cuatro_</b>.</p>
+  <p>Los renders son ilustrativos. Mandan los dibujos y el modelo 3D.</p>
+</footer>
+
+<div class="bar" id="bar"><div class="in"><div><small id="barl">Total preliminar</small><b id="p2">$0</b></div><button id="barb" type="button">Aprobar</button></div></div>
+
+<script>
+(function(){
+/* ============ DATOS DE LA PROPUESTA (precios de prueba: reglas preliminares por pulgada lineal) ============ */
+var BASE={id:'cama',n:'Pared de la cama',d:'Murphy bed Full horizontal, closet con dos hojas plegables y almacenaje hasta 84". Pared de 137".',p:4110};
+var ZONAS=[
+ {id:'seg2',n:'Segundo cuerpo, de 84" a 108"',d:'Ocho puertas altas sobre toda la pared de la cama.',p:4110,on:1},
+ {id:'escritorio',n:'Escritorio para dos',d:'Tope de nogal de 98" × 24", dos módulos para PC y bandeja extraíble para la impresora.',p:3920,on:1},
+ {id:'altos',n:'Gabinetes altos del escritorio',d:'Cinco puertas de 64" a 84", con luz de trabajo debajo.',p:2940,on:1,dep:'escritorio'},
+ {id:'credenza',n:'Credenza bajo la ventana',d:'73" de largo y 12" de fondo. Hace de cabecero y guarda el equipo de ejercicio.',p:2920,on:1},
+ {id:'consola',n:'Consola del home lab',d:'48" bajo el TV, con el rack a la vista tras una puerta perforada.',p:1920,on:1}
+];
+var EXTRAS=[
+ {id:'luz',n:'Luz indirecta sobre el mueble',d:'Tira cálida de 2700 K a todo lo largo de la pared de la cama.',p:300,on:0}
+];
+/* Receptor de aprobaciones (Apps Script de A Cuatro). Vacío = la aprobación no se envía. */
+var RECEPTOR='';
+var PAGOS=[[0.6,'Depósito','Al firmar el contrato'],[0.3,'Entrega','Al recibir el proyecto e iniciar la instalación'],[0.1,'Final','Al terminar']];
+var TABS=[
+ {k:'cerrada',n:'Cerrada',src:'r-cerrada.jpg',c:'Oficina para dos, con la cama escondida en la pared.'},
+ {k:'abierta',n:'Abierta',src:'r-abierta.jpg',c:'Cama abierta, con la cabecera hacia la ventana.'},
+ {k:'escritorio',n:'Escritorio',src:'r-escritorio.jpg',c:'Escritorio para dos y credenza en L, con el tope de nogal continuo.'},
+ {k:'tv',n:'Home lab',src:'r-tv.jpg',c:'Consola con el rack a la vista, bajo el TV.'},
+ {k:'3d',n:'3D',c:'Gire el cuarto con el dedo. Toque la cama o cualquier puerta para abrirla.'}
+];
+/* ========================================================================================================= */
+var $=function(id){return document.getElementById(id);};
+var on={},aprob=false,all=ZONAS.concat(EXTRAS);
+all.forEach(function(z){on[z.id]=!!z.on;});
+try{var sv=JSON.parse(localStorage.getItem('a4-cuarto-oficina-r9')||'null');if(sv&&sv.on)all.forEach(function(z){if(typeof sv.on[z.id]==='boolean')on[z.id]=sv.on[z.id];});}catch(e){}
+function save(){try{localStorage.setItem('a4-cuarto-oficina-r9',JSON.stringify({on:on}));}catch(e){}}
+function act(z){return on[z.id]&&(!z.dep||on[z.dep]);}
+function usd(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function total(){var t=BASE.p;all.forEach(function(z){if(act(z))t+=z.p;});return t;}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+function row(z,fix){
+  var b=document.createElement(fix?'div':'button');
+  if(!fix){b.type='button';b.setAttribute('role','switch');}
+  b.className='opt'+(fix?' fix':'');b.dataset.id=z.id;
+  b.innerHTML='<span class="tx"><span class="n">'+esc(z.n)+'</span><span class="d">'+esc(z.d)+'</span></span><span class="p">'+(fix?usd(z.p):'+'+usd(z.p))+'</span>'+(fix?'<span class="inc">Base</span>':'<span class="sw"></span>');
+  if(!fix)b.onclick=function(){if(aprob)return;if(z.dep&&!on[z.dep]){on[z.dep]=true;on[z.id]=true;}else on[z.id]=!on[z.id];save();render(true);};
+  return b;
+}
+$('zonas').appendChild(row(BASE,true));
+ZONAS.forEach(function(z){$('zonas').appendChild(row(z));});
+EXTRAS.forEach(function(z){$('extras').appendChild(row(z));});
+
+var last=null;
+function render(bump){
+  var t=total();
+  [].forEach.call(document.querySelectorAll('.opt[data-id]'),function(b){var z=all.filter(function(x){return x.id===b.dataset.id;})[0];if(!z)return;
+    b.classList.toggle('on',act(z));b.classList.toggle('off-dep',!!(z.dep&&!on[z.dep]));b.setAttribute('aria-checked',act(z)?'true':'false');});
+  ['p1','p2'].forEach(function(id){var e=$(id);e.textContent=usd(t);if(bump&&t!==last){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump');}});
+  last=t;
+  var h='<div><span>'+esc(BASE.n)+'</span><span>'+usd(BASE.p)+'</span></div>';
+  all.forEach(function(z){if(act(z))h+='<div><span>'+esc(z.n)+'</span><span>'+usd(z.p)+'</span></div>';});
+  h+='<div><span>Instalación</span><span>Incluida</span></div><div><span>Total preliminar</span><span>'+usd(t)+'</span></div>';
+  $('sum').innerHTML=h;
+  $('pay').innerHTML=PAGOS.map(function(p){return '<div><i>'+p[1]+' · '+Math.round(p[0]*100)+' %</i><b>'+usd(t*p[0])+'</b><span>'+p[2]+'</span></div>';}).join('');
+  var n=1+all.filter(act).length;
+  $('resumen').textContent='Su selección: '+n+' de '+(1+all.length)+' partidas, por '+usd(t)+'. Con el depósito del 60 % ('+usd(t*0.6)+') se reserva su fecha de fabricación.';
+  if(window.a4sync)window.a4sync();
+}
+function texto(){
+  var t=total(),L=['A Cuatro · Cuarto oficina con Murphy bed · Concepto R9','Cliente: Miguel','','Selección aprobada:','- '+BASE.n+': '+usd(BASE.p)];
+  all.forEach(function(z){if(act(z))L.push('- '+z.n+': '+usd(z.p));});
+  var no=all.filter(function(z){return !act(z);}).map(function(z){return z.n;});
+  if(no.length)L.push('','No incluye: '+no.join('; ')+'.');
+  L.push('','Total preliminar: '+usd(t)+' (instalación incluida)','Depósito 60 %: '+usd(t*0.6)+' · 30 %: '+usd(t*0.3)+' · 10 %: '+usd(t*0.1));
+  return L.join('\n');
+}
+
+/* ---------- aprobar ---------- */
+$('chk').onchange=function(){$('go').disabled=!this.checked;};
+function setAprob(v){aprob=v;$('pre').hidden=v;$('post').hidden=!v;$('bar').classList.toggle('done',v);$('barb').textContent=v?'Aprobada ✓':'Aprobar';$('barl').textContent=v?'Total aprobado':'Total preliminar';
+  [].forEach.call(document.querySelectorAll('button.opt'),function(b){b.disabled=v;});
+  if(v){var d=new Date();$('okline').textContent=usd(total())+' · '+d.toLocaleDateString('es-PR',{day:'numeric',month:'long',year:'numeric'});$('ta').value=texto();}
+  else{$('chk').checked=false;$('go').disabled=true;$('ta').style.display='none';$('copy').textContent='Copiar el resumen de mi selección';}}
+function enviar(){var e=$('envio');if(!RECEPTOR)return;e.hidden=false;e.textContent='Enviando su aprobación a A Cuatro…';
+  var fallo=function(){e.textContent='No pudimos enviar su aprobación. Copie el resumen y envíelo a A Cuatro.';};
+  try{fetch(RECEPTOR,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({propuesta:'cuarto-oficina-r9',cliente:'Miguel',total:total(),partidas:all.filter(act).map(function(z){return z.id;}),resumen:texto(),fecha:new Date().toISOString()})})
+    .then(function(r){if(r.ok)e.textContent='A Cuatro recibió su aprobación.';else fallo();},fallo);}catch(x){fallo();}}
+if(RECEPTOR)$('pilot').textContent='Piloto · los precios son de prueba.';
+$('go').onclick=function(){setAprob(true);enviar();$('aprobar').scrollIntoView({behavior:'smooth',block:'start'});};
+$('undo').onclick=function(){setAprob(false);};
+$('barb').onclick=function(){$('aprobar').scrollIntoView({behavior:'smooth',block:'start'});};
+$('copy').onclick=function(){var b=this,ta=$('ta');function fb(){ta.style.display='block';ta.focus();ta.select();b.textContent='Seleccione el texto y cópielo';}
+  try{navigator.clipboard.writeText(ta.value).then(function(){b.textContent='Resumen copiado ✓';},fb);}catch(e){fb();}};
+
+/* ---------- visor: renders y modelo 3D ---------- */
+var cur='cerrada',three=null;
+TABS.forEach(function(t){var b=document.createElement('button');b.type='button';b.textContent=t.n;b.dataset.k=t.k;b.onclick=function(){tab(t.k);};$('tabs').appendChild(b);});
+function tab(k){cur=k;var t=TABS.filter(function(x){return x.k===k;})[0],is3=(k==='3d');
+  [].forEach.call($('tabs').children,function(b){b.className=b.dataset.k===k?'on':'';});
+  $('vcap').textContent=t.c;$('shot').hidden=is3;$('cv').hidden=!is3;$('tag').hidden=is3;$('vctl').style.display=is3?'flex':'none';
+  $('vnote').textContent=is3?'Modelo de concepto con las medidas del levante. Refleja lo que usted seleccione abajo.':'Render ilustrativo. Mandan los dibujos y el modelo 3D.';
+  if(!is3){$('shot').src=t.src;$('shot').alt='Render: '+t.c;$('load').hidden=true;return;}
+  if(three==='ok'){window.a4size();return;}
+  if(three)return;
+  three='loading';$('load').hidden=false;$('load').textContent='Cargando el modelo 3D…';
+  seq(['three.min.js','OrbitControls.js','model.js'],function(err){
+    if(err){three=null;$('load').textContent='No se pudo cargar el modelo 3D. Toque «3D» para intentarlo otra vez.';return;}
+    try{init3D();three='ok';$('load').hidden=true;}catch(e){three=null;$('load').textContent='Este dispositivo no pudo mostrar el modelo 3D.';}
+  });
+}
+function seq(list,cb){var i=0;(function next(){if(i>=list.length)return cb();var s=document.createElement('script');s.src=list[i++];s.onload=next;s.onerror=function(){cb(true);};document.head.appendChild(s);})();}
+$('see3d').onclick=$('doc3d').onclick=function(ev){if(ev&&ev.preventDefault)ev.preventDefault();tab('3d');$('visor').scrollIntoView({behavior:'smooth',block:'start'});};
+
+function init3D(){
+var M=A4,d=M.dims,cv=$('cv');
+var rn=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+rn.setPixelRatio(Math.min(window.devicePixelRatio||1,2));rn.shadowMap.enabled=true;rn.shadowMap.type=THREE.PCFSoftShadowMap;
+rn.outputEncoding=THREE.sRGBEncoding;rn.toneMapping=THREE.ACESFilmicToneMapping;rn.toneMappingExposure=0.98;
+var sc=new THREE.Scene();sc.background=new THREE.Color(0xdfe3e4);
+var ambG=new THREE.Group();sc.add(ambG);
+var cam=new THREE.PerspectiveCamera(50,1,1,2000);cam.up.set(0,0,1);
+var oc=new THREE.OrbitControls(cam,cv);oc.enableDamping=false;oc.enablePan=false;oc.enableZoom=true;
+sc.add(new THREE.HemisphereLight(0xfff6ea,0xc9b79c,0.5));
+var sun=new THREE.DirectionalLight(0xfff1dc,0.85);sun.position.set(235,95,175);sun.target.position.set(55,45,10);sc.add(sun);sc.add(sun.target);
+sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);var s=sun.shadow.camera;s.left=-130;s.right=130;s.top=130;s.bottom=-130;s.near=10;s.far=600;sun.shadow.bias=-0.0012;sun.shadow.radius=5;
+var fill=new THREE.PointLight(0xffd9a8,0.4,220);fill.position.set(70,60,120);sc.add(fill);
+function cvTex(w,hh,fn){var c=document.createElement('canvas');c.width=w;c.height=hh;fn(c.getContext('2d'),w,hh);var t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;return t;}
+function rnd(i){var x=Math.sin(i*127.1)*43758.5453;return x-Math.floor(x);}
+var nogTex=cvTex(256,512,function(g,w,hh){g.fillStyle='#8f5e36';g.fillRect(0,0,w,hh);for(var i=0;i<140;i++){var x=rnd(i)*w;g.strokeStyle='rgba('+(rnd(i+9)>.5?'60,34,16':'178,128,84')+','+(0.10+rnd(i+3)*0.22)+')';g.lineWidth=0.6+rnd(i+5)*2.4;g.beginPath();g.moveTo(x,0);g.bezierCurveTo(x+rnd(i+1)*10-5,hh*.3,x+rnd(i+2)*10-5,hh*.7,x+rnd(i+4)*6-3,hh);g.stroke();}});
+var pisoTex=cvTex(512,512,function(g,w,hh){g.fillStyle='#c79a5c';g.fillRect(0,0,w,hh);for(var a=0;a<2;a++)for(var b=0;b<2;b++){g.fillStyle='rgba('+(a^b?'214,170,108':'190,146,84')+',0.55)';g.fillRect(a*256,b*256,256,256);}
+ for(var i=0;i<26;i++){g.strokeStyle='rgba(92,58,26,'+(0.18+rnd(i)*0.3)+')';g.lineWidth=0.7+rnd(i+7)*1.5;g.beginPath();var x=rnd(i+1)*w,y=rnd(i+2)*hh;g.moveTo(x,y);for(var k=0;k<4;k++){x+=rnd(i*5+k)*90-45;y+=rnd(i*7+k)*90-45;g.lineTo(x,y);}g.stroke();}
+ g.strokeStyle='rgba(120,88,50,0.9)';g.lineWidth=3;for(var q=0;q<=2;q++){g.beginPath();g.moveTo(q*256,0);g.lineTo(q*256,hh);g.stroke();g.beginPath();g.moveTo(0,q*256);g.lineTo(w,q*256);g.stroke();}});
+function plane(w,h,col,pos,rot){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({color:new THREE.Color(col).convertSRGBToLinear(),roughness:.95}));m.position.set(pos[0],pos[1],pos[2]);m.rotation.set(rot[0],rot[1],rot[2]);m.receiveShadow=true;sc.add(m);return m;}
+var WALL=0xf1ede4;
+var piso=plane(d.W,d.D,0xffffff,[d.W/2,d.D/2,0],[0,0,0]);piso.material.map=pisoTex;pisoTex.repeat.set(d.W/24,d.D/24);piso.material.roughness=.35;piso.material.metalness=.05;piso.material.needsUpdate=true;
+plane(4,d.H,WALL,[2,0,d.H/2],[-Math.PI/2,0,Math.PI]);plane(d.W-34,d.H,WALL,[34+(d.W-34)/2,0,d.H/2],[-Math.PI/2,0,Math.PI]);plane(30,d.H-84,WALL,[19,0,84+(d.H-84)/2],[-Math.PI/2,0,Math.PI]);
+(function(){var m=new THREE.Mesh(new THREE.BoxGeometry(30,26,84),new THREE.MeshStandardMaterial({color:new THREE.Color(0xd8d2c6).convertSRGBToLinear(),roughness:.95,side:THREE.BackSide}));m.position.set(19,-13,42);sc.add(m);
+ var fl=new THREE.Mesh(new THREE.PlaneGeometry(30,26),new THREE.MeshStandardMaterial({color:new THREE.Color(0xc9a269).convertSRGBToLinear(),roughness:.95}));fl.position.set(19,-13,0.03);sc.add(fl);
+ var rod=new THREE.Mesh(new THREE.CylinderGeometry(0.6,0.6,30,12),new THREE.MeshStandardMaterial({color:0x777777,metalness:.7,roughness:.4}));rod.rotation.z=Math.PI/2;rod.position.set(19,-12,68);sc.add(rod);
+ var cols=[0x8d9aa5,0xcfc7b8,0x5f6b62,0xb9a58c,0x3f464c,0xd9d4ca];for(var i=0;i<6;i++){var g=new THREE.Mesh(new THREE.BoxGeometry(2.6,18,30+(i%3)*5),new THREE.MeshStandardMaterial({color:new THREE.Color(cols[i]).convertSRGBToLinear(),roughness:.9}));g.position.set(8+i*4.4,-12,66-(30+(i%3)*5)/2);ambG.add(g);}
+ [0xcfc7b8,0xb9a58c].forEach(function(c,i){var b=new THREE.Mesh(new THREE.BoxGeometry(11,14,7),new THREE.MeshStandardMaterial({color:new THREE.Color(c).convertSRGBToLinear(),roughness:.9}));b.position.set(11+i*14,-13,78.3);ambG.add(b);});
+ var sh=new THREE.Mesh(new THREE.BoxGeometry(30,24,0.75),new THREE.MeshStandardMaterial({color:new THREE.Color(0xe9e4da).convertSRGBToLinear(),roughness:.9}));sh.position.set(19,-13,74);sc.add(sh);
+})();
+var wA=plane(d.W,d.H,WALL,[d.W/2,d.D,d.H/2],[Math.PI/2,0,0]);
+plane(d.D,d.H,WALL,[0,d.D/2,d.H/2],[Math.PI/2,Math.PI/2,0]);
+plane(d.D,d.H,WALL,[d.W,d.D/2,d.H/2],[Math.PI/2,-Math.PI/2,0]);
+var ceil=plane(d.W,d.D,0xf7f4ee,[d.W/2,d.D/2,d.H],[Math.PI,0,0]);
+var win=new THREE.Mesh(new THREE.PlaneGeometry(61,44),new THREE.MeshBasicMaterial({color:0xa9cfe0}));win.position.set(d.W-0.15,55.5,64);win.rotation.set(Math.PI/2,-Math.PI/2,0);sc.add(win);
+var wf=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(61,44)),new THREE.LineBasicMaterial({color:0x2b2f33}));wf.position.copy(win.position);wf.position.x-=0.05;wf.rotation.copy(win.rotation);sc.add(wf);
+var led=new THREE.Mesh(new THREE.BoxGeometry(d.W-1,1,0.6),new THREE.MeshBasicMaterial({color:0xffe9c4}));led.position.set(d.W/2,1.2,108.4);sc.add(led);
+var led2=new THREE.Mesh(new THREE.BoxGeometry(96,0.6,0.4),new THREE.MeshBasicMaterial({color:0xffe2b0}));led2.position.set(88,111,63.8);sc.add(led2);var ledL=new THREE.PointLight(0xffd29a,0.35,70);ledL.position.set(88,106,60);sc.add(ledL);
+var em=new THREE.LineBasicMaterial({color:0x2a2a2a,transparent:true,opacity:.32});
+var meshes=[];
+M.parts.forEach(function(p){
+  var g=new THREE.BoxGeometry(p.h[0]*2,p.h[1]*2,p.h[2]*2);
+  var isN=(p.col===0x9a6a3f);var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:new THREE.Color(isN?0xffffff:p.col).convertSRGBToLinear(),map:isN?nogTex:null,roughness:p.col===0x22272b?.5:(isN?.6:.82)}));
+  m.castShadow=true;m.receiveShadow=true;m.matrixAutoUpdate=false;m.userData=p;
+  m.add(new THREE.LineSegments(new THREE.EdgesGeometry(g),em));
+  sc.add(m);meshes.push(m);
+});
+var hw=new THREE.Group();sc.add(hw);
+(function(){var mm=new THREE.MeshStandardMaterial({color:new THREE.Color(0x2b2f33).convertSRGBToLinear(),roughness:.4,metalness:.6});
+ function rod(a,b,r){var v=new THREE.Vector3().subVectors(b,a),m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,v.length(),10),mm);m.position.copy(a).addScaledVector(v,.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),v.clone().normalize());m.castShadow=true;hw.add(m);}
+ [44+1.05,44+79.82].forEach(function(x){rod(new THREE.Vector3(x,d.FD-10,33.625),new THREE.Vector3(x,d.FD,13.9),0.45);});
+ [46.6,122.3].forEach(function(x){rod(new THREE.Vector3(x,54.5,0),new THREE.Vector3(x,54.5,11.2),0.4);});
+})();
+var st={};M.CTL.forEach(function(c){st[c[0]]=0;});
+var hide={},pst={};
+function tOf(p){return p.ctl?((pst[p.id]!=null)?pst[p.id]:(st[p.ctl]||0)):0;}
+/* qué partida de la propuesta dibuja cada pieza del modelo */
+function sel(p){
+  if(p.id==='tv')return true;
+  if(p.grp==='credenza')return on.credenza;
+  if(p.grp==='consola')return on.consola;
+  if(p.grp==='escritorio'){var alto=p.id.indexOf('dk_u')===0||(p.amb&&p.c[2]>60);return on.escritorio&&(!alto||on.altos);}
+  if(p.grp==='paredC'&&(p.c[2]-p.h[2])>=83.9)return on.seg2;
+  return true;
+}
+function apply(){
+  meshes.forEach(function(m){var p=m.userData,q=M.pose(p,tOf(p)),R=q.R,k=1,cz=q.c[2];
+    if(p.id==='c_fill'&&!on.seg2){k=84/108;cz=42;}
+    m.matrix.set(R[0][0],R[0][1],R[0][2]*k,q.c[0],R[1][0],R[1][1],R[1][2]*k,q.c[1],R[2][0],R[2][1],R[2][2]*k,cz,0,0,0,1);
+    m.matrixWorldNeedsUpdate=true;m.visible=!hide[p.grp]&&sel(p)&&(!p.openOnly||st.cama>0.97);});
+  hw.visible=st.cama>0.97;
+  led.visible=on.luz;led.position.z=on.seg2?108.4:84.4;
+  var a=on.escritorio&&on.altos&&!hide.escritorio;led2.visible=a;ledL.visible=a;
+  draw();
+}
+function size(){var w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;rn.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();draw();}
+function draw(){rn.render(sc,cam);}
+oc.addEventListener('change',draw);window.addEventListener('resize',size);
+var V={
+ general:{n:'General',p:[-10,88,56],t:[124,38,56],f:66,h2:['entrada','consola']},
+ frontal:{n:'Pared de la cama',p:[68.5,300,60],t:[68.5,0,60],f:30,h:['escritorio','entrada']},
+ escritorio:{n:'Escritorio',p:[52,24,62],t:[98,113,44],f:70},
+ tv:{n:'Home lab',p:[128,55,52],t:[0,55,42],f:62}
+};
+var vk='general';
+function view(k){vk=k;var v=V[k];pst={};hide={};(v.h||[]).concat(v.h2||[]).forEach(function(g){hide[g]=1;});wA.visible=!(v.h&&v.h.length);
+  cam.fov=v.f;cam.position.set(v.p[0],v.p[1],v.p[2]);oc.target.set(v.t[0],v.t[1],v.t[2]);cam.updateProjectionMatrix();oc.update();btns();apply();}
+/* controles bajo el modelo */
+var ctl=$('vctl'),anim=null;
+Object.keys(V).forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=V[k].n;b.dataset.v=k;b.onclick=function(){view(k);};ctl.appendChild(b);});
+var bc=document.createElement('button');bc.type='button';bc.onclick=function(){go('cama',st.cama>0.5?0:1,1100);};ctl.appendChild(bc);
+var bp=document.createElement('button');bp.type='button';bp.onclick=function(){var op=st.puertasC>0.5?0:1;pst={};['closet','puertasC','altasC','credenza','credenzaL','escritorio','consola'].forEach(function(c){st[c]=op;});btns();apply();};ctl.appendChild(bp);
+function btns(){[].forEach.call(ctl.querySelectorAll('[data-v]'),function(b){b.className=b.dataset.v===vk?'on':'';});bc.textContent=st.cama>0.5?'Cerrar la cama':'Abrir la cama';bp.textContent=st.puertasC>0.5?'Cerrar puertas':'Abrir puertas';}
+function go(c,to,ms,p){var from=p?tOf(p):(st[c]||0),t0=performance.now();if(anim)cancelAnimationFrame(anim);
+  (function step(){var k=Math.min(1,(performance.now()-t0)/ms),val=from+(to-from)*(k*k*(3-2*k));if(p)pst[p.id]=val;else st[c]=val;apply();if(k<1)anim=requestAnimationFrame(step);else btns();})();}
+var ray=new THREE.Raycaster(),dn=null;
+cv.addEventListener('pointerdown',function(e){dn=[e.clientX,e.clientY];});
+cv.addEventListener('pointerup',function(e){if(!dn)return;var mv=Math.abs(e.clientX-dn[0])+Math.abs(e.clientY-dn[1]);dn=null;if(mv>8)return;
+  var r=cv.getBoundingClientRect(),v=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(v,cam);
+  var hits=ray.intersectObjects(meshes.filter(function(m){return m.visible;}),false);if(!hits.length)return;var p=hits[0].object.userData;if(!p||!p.ctl)return;
+  var whole=(p.ctl==='cama'||p.ctl==='closet');
+  if(whole)go(p.ctl,(st[p.ctl]||0)>0.5?0:1,p.ctl==='cama'?1100:450);else go(p.ctl,tOf(p)>0.5?0:1,450,p);
+});
+window.a4sync=apply;window.a4size=size;
+size();view('general');
+}
+
+render(false);tab('cerrada');
+})();
+</script>
+</body>
+</html>
